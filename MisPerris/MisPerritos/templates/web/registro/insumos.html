@@ -1,0 +1,55 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block estilos %}
+	<link rel="stylesheet" href="{% static 'css/registro.css' %}">
+	<link rel="stylesheet" href="{% static 'css/form.css' %}">
+	<link rel="stylesheet" href="{% static 'css/insumos.css' %}">
+	<link rel="stylesheet" href="{% static 'css/usuario.css' %}">
+{% endblock estilos %}
+
+{% block header %}
+	<div class="container h-100">
+		<div class="row align-items-center div-header" style="height: 75%">
+			<div class="col-12 text-center">
+				<h1 class="header-title">Registro de <br> Insumos </h1>
+			</div>
+		</div>
+	</div>
+{% endblock header %}
+
+{% block contenido %}
+	<div class="py-5">
+		<div class="container p-5">
+			<div class="row text-center" style="background:#F5F5F5;border-radius:50px;padding: 75px;">
+				<div class="col-12">
+					<h2 style="font-size:55px;font-weight: bolder;">Insumos</h2>
+					<hr>
+					<div class="container-form mt-4 pb-4">
+						<form id="formInsumos" method="POST" action="gracias.html">
+							<div class="row">
+								<div class="col-12">
+									<input type="text" class="form-control" id="inputNombre" aria-describedby="nombreHelp" placeholder="Nombre">
+								</div>
+								<div class="col-6 mt-3">
+									<input type="number" class="form-control" id="inputPrecio" aria-describedby="precioHelp" placeholder="Precio">
+								</div>
+								<div class="col-6 mt-3">
+									<input type="text" class="form-control" id="inputDescripcion" aria-describedby="descripcionHelp" placeholder="Descripción">
+								</div>
+								<div class="col-6 text-left mt-5">
+									<button type="button" class="btn btn-limpiar" onclick="Limpiar()">Limpiar</button>
+								</div>
+								<div class="col-6 text-right mt-5">
+									<button type="button" class="btn btn-enviar" onclick="return ValidarInsumos()">Enviar</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock contenido %}
+{% block js %}
+	<script src="{% static 'js/validarInsumos.js' %}"></script>
+{% endblock js %}

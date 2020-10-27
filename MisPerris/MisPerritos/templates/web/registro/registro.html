@@ -1,0 +1,48 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block estilos %}
+	<link rel="stylesheet" href="{% static 'css/registro.css' %}">
+{% endblock estilos %}
+
+{% block header %}
+	<div class="container h-100">
+		<div class="row align-items-center div-header" style="height: 75%">
+			<div class="col-12 text-center">
+				<h1 class="header-title">Registrate para <br> agendar hora </h1>
+				<p class="lead my-4 header-subtitle">En Limpialo te ayudaremos a dejar tu <br> auto como nuevo</p>
+			</div>
+		</div>
+	</div>
+{% endblock header %}
+
+{% block contenido %}
+	<!-- Registro -->
+	<div class="pb-5">
+		<div class="container py-5 text-center">
+			<h2 style="font-weight:bolder">Registro</h2>
+			<hr>
+			<p>Si deseas reservar una hora pincha en “Usuario” para registrate, si deseas hacer <br> una petición para ingreso de insumos pincha en “Insumos”</p>
+		</div>
+		<div class="container-fluid pb-5 text-center">
+			<div class="row justify-content-center px-4 px-xl-2">
+				<div class="col-12 col-xl-4 mr-0 mr-xl-5 registro-border" style="background-color: #F7FAFC;">
+					<a href="{% url 'USUARIO' %}">
+						<div>
+							<a href="{% url 'USUARIO' %}"><p class="mb-0">Usuario</p></a>
+							<hr class="hr mt-0">
+						</div>
+					</a>
+					</div>			
+					<div class="col-12 col-xl-4 mr-0 ml-xl-5 registro-border mt-5 mt-xl-0" style="background-color: #F7FAFC;">
+						<a href="{% url 'INSUMOS' %}">
+							<div>
+								<p class="mb-0">Insumos</p>
+								<hr class="hr mt-0">
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+{% endblock contenido %}

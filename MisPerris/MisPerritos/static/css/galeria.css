@@ -1,0 +1,44 @@
+.masthead {
+    background-image: url(../images/lavando3.jpg);
+}
+
+.galeria h2 {
+    font-weight: bolder;
+}
+
+.foto-tl {
+    border-top-left-radius: 50px;
+}
+
+.foto-bl {
+    border-bottom-left-radius: 50px;
+}
+
+.foto-tr {
+    border-top-right-radius: 50px;
+}
+
+.foto-br {
+    border-bottom-right-radius: 50px;
+}
+
+@media(max-width:1200px) {
+    .foto-tl {
+        border-top-left-radius: 20px!important;
+    }
+    .foto-bl {
+        border-bottom-left-radius: 20px;
+    }
+    .foto-tr-cel {
+        border-top-right-radius: 20px;
+    }
+    .foto-br-cel {
+        border-bottom-right-radius: 20px;
+    }
+    .foto-tr {
+        border-top-right-radius: 0%;
+    }
+    .foto-br {
+        display: none;
+    }
+}

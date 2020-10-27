@@ -1,0 +1,70 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block estilos %}
+	<link rel="stylesheet" href="{% static 'css/registro.css' %}">
+	<link rel="stylesheet" href="{% static 'css/form.css' %}">
+	<link rel="stylesheet" href="{% static 'css/usuario.css' %}">
+{% endblock estilos %}
+
+{% block header %}
+	<div class="container h-100">
+		<div class="row align-items-center div-header" style="height: 75%">
+			<div class="col-12 text-center">
+				<h1 class="header-title">Registro de <br> Usuario </h1>
+			</div>
+		</div>
+	</div>
+{% endblock header %}
+
+{% block contenido %}
+	<div class="py-5">	
+		<div class="container p-5">
+			<div class="row text-center row-form" style="background:#F5F5F5;border-radius:50px;padding: 75px;">
+				<div class="col-12">
+					<h2 class="registrate-title" style="font-size:55px;font-weight: bolder;">Regístrate</h2>
+					<hr>
+					<div class="container-form mt-4 pb-4">
+						<form id="formUsuario" method="POST" action="gracias.html" >
+							<div class="row">
+								<div class="col-12">
+									<input type="text" class="form-control" id="inputRut" aria-describedby="rutHelp" placeholder="Rut (Ejemplo: 01111111-1)">
+								</div>
+								<div class="col-12 col-xl-6 mt-3">
+									<input type="text" class="form-control" id="inputNombre" aria-describedby="nombreHelp" placeholder="Nombre">
+								</div>
+								<div class="col-12 col-xl-6 mt-3">
+									<input type="text" class="form-control" id="inputApellido" aria-describedby="apellidoHelp" placeholder="Apellido">
+								</div>
+								<div class="col-12 col-xl-6 mt-3">
+									<input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Email">
+								</div>
+								<div class="col-12 col-xl-6 mt-3">
+									<input type="date" class="form-control" id="inputFecha" aria-describedby="fechaHelp" placeholder="Fecha Nacimiento">
+								</div>
+								<div class="col-12 col-xl-6 mt-3">
+									<input type="text" class="form-control" id="inputUsername" aria-describedby="usuarioHelp" placeholder="Nombre Usuario">
+								</div>
+								<div class="col-12 col-xl-6 mt-3">
+									<input type="password" class="form-control" id="inputPassword" aria-describedby="passwordHelp" placeholder="Contraseña">
+								</div>
+								<div class="col-12 mt-4 text-left" id="alertFecha">
+									<p id="pFecha" class="ml-3" style="color:red"></p>
+								</div>
+								<div class="col-6 text-left mt-5">
+									<button type="button" class="btn btn-limpiar" onclick="Limpiar()">Limpiar</button>
+								</div>							
+								<div class="col-6 text-right mt-5">
+									<button type="button" class="btn btn-enviar" onclick="return Validar()" >Enviar</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock contenido %}
+
+{% block js %}
+	<script src="{% static 'js/validar.js' %}"></script>
+{% endblock js %}

@@ -1,0 +1,41 @@
+.masthead {
+    background-image: url(../images/fondowasgh.jpg);
+}
+
+.icono {
+    width: 80px;
+    height: 80px;
+}
+
+.direccion h2 {
+    font-weight: bolder;
+}
+
+.direccion-borde {
+    border-radius: 50px;
+    padding: 100px 50px;
+    color: black;
+    font-size: x-large;
+    font-weight: 500;
+}
+
+.direccion-borde:hover {
+    color: #FF5B15;
+    font-size: x-large;
+    transition: 1s;
+}
+
+.direccion-borde:hover hr {
+    border-top: solid 1px black;
+}
+
+@media (max-width:992px) {
+    .direccion-borde {
+        padding: 50px 50px;
+    }
+}
+.mapa{
+    border-radius: 50px!important;
+}
+
+

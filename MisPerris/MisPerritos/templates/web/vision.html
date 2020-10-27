@@ -1,0 +1,114 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block estilos %}
+	<link rel="stylesheet" href="{% static 'css/nosotros.css' %}">
+{% endblock estilos %}
+
+{% block header %}
+<div class="container h-100">
+	<div class="row align-items-center div-header" style="height: 75%">
+		<div class="col-12 text-center">
+			<h1 class="header-title">La satisfacción del cliente, <br> lo más importante</h1>
+			<p class="lead my-4 header-subtitle">Si no quedas satisfecho te <br> devolvemos tu dinero!</p>				
+		</div>
+	</div>
+</div>
+{% endblock header %}
+
+{% block contenido %}
+	<div class="pt-5">
+		<div class="container-fluid pb-5 container-nosotros">
+			<!-- Texto Nosotros -->
+			<div class="row justify-content-center px-5 pt-5">
+				<div class="col-12 col-xl-6 my-auto px-0 px-md-5">
+					<div class="">
+						<h2 class="text-center" style="font-size: 40px">Misión</h2>
+						<hr>
+						<p class="mt-5 text-justify" style="font-size: 18px"> <!--AQUI HAY QUE EDITAR PARA PONER LA MISIÓN-->
+							<!--Somos un equipo de trabajo con más de 10 años de experiencia en el desarrollo de proyectos de interiorismo y mobiliarios a medida de alta calidad. <br> <br> 
+							En Custa te acompañamos en cada etapa de tu proyecto: te asesoramos en la elección de materiales, colores, muebles, artefactos u otros a incorporar. 
+							Con la idea de crear un diseño único, con identidad propia que refleje tus gustos, otorgando mayor funcionalidad, optimización de espacio, confort, 
+							estética y mejorando tu calidad de vida.-->
+
+							{{mision}}
+						</p>
+					</div>
+				</div>
+				<!-- Foto Nosotros -->
+				<div class="col-12 col-xl-6 nosotros-img" style="background-image: url({% static 'images/nosotros.jpg' %});border-radius: 50px;">
+				</div>
+				<!-- End Foto -->
+			</div>
+			<!-- End Texto -->
+		</div>
+
+		<!-- Item -->
+		<div class="container" style="margin-top: 100px">
+			<div class="row">
+				<div class="col-xl-6 col-12">
+						<div class="col-12 nosotros-img nosotros-img-bottom-right" style="background-image: url(https://www.mixsrl.com/wp-content/uploads/2018/10/shutterstock_139337444-copia-2.jpg); height: 50vh;">
+							
+						</div>
+				</div>
+				<div class="col-xl-6 col-12 px-5 my-auto">
+					<h3 class="text-center mt-4 mt-xl-0" style="font-size: 40px">Visión</h3>
+					<hr>
+					<p class="mt-4" style="font-size: 20px"> <!--AQUI HAY QUE EDITAR PARA PONER LA VISIÓN-->
+						<!--Sabemos que hoy se vive rápido, por esto nuestro equipo de profesionales realizarán su tarea lo más rápido posible para que usted tenga su auto en poco tiempo.-->
+						
+						{{vision}}
+					</p>
+				</div>
+			</div>
+			<!-- End Item -->
+			<!-- Item -->
+			<div class="row mt-5">
+				<div class="col-xl-6 col-12 px-5 my-auto order-12 mt-5">
+					<h3 class="text-center mt-4 mt-xl-0" style="font-size: 40px">Calidad</h3>
+					<hr>
+					<p class="mt-4" style="font-size: 20px">
+						Realizamos nuestro trabajo al pie de la letra, asegurese que su auto se encontrará como nuevo por dentro y por fuera.
+					</p>
+				</div>
+				<div class="col-xl-6 col-12 mt-3 order-xl-12">
+					<div class="col-12 nosotros-img nosotros-img-medium-left" style="background-image: url(https://cadenaser00.epimg.net/ser/imagenes/2020/05/20/radio_murcia/1589965293_057033_1589973377_noticia_normal.jpg); height: 50vh;">
+						
+					</div>
+				</div>
+			</div>
+			<!-- End Item -->
+			<!-- Item -->
+			<div class="row mt-5">
+				<div class="col-xl-6 col-12">
+					<div class="col-12 proyecto-img nosotros-img-top-right" style="background-image: url(https://www.soundiegoonline.com/wp-content/uploads/2017/07/Car-Alarm-System-Myths.gif); height: 50vh;">
+						
+					</div>
+				</div>
+				<div class="col-xl-6 col-12 px-5 my-auto">
+					<h3 class="text-center mt-4 mt-xl-0" style="font-size: 40px">Seguridad</h3>
+					<hr>
+					<p class="mt-4" style="font-size: 20px">
+						Un auto es para muchos como su hijo, con nosotros su auto estará seguro hasta que usted vuelva a recogerlo.
+					</p>
+				</div>
+			</div>
+			<!-- End Item -->
+			<!-- Agenda -->
+			<div class="row" style="padding: 100px 0px 100px 0px">
+				<div class="col-12 col-xl-6 text-center">
+					<h3 style="font-size: 55px;font-weight: bold;">Y tu... <br> ¿Listo para agendar?</h3>
+				</div>
+				<div class="col-12 col-xl-6 text-center my-auto">
+					<a href="/contacto"><button class="btn btn-header" style="font-size: 20px">Regístrate</button></a>
+				</div>
+			</div>
+			<!-- End Agenda -->
+		</div>
+	</div>
+{% endblock contenido %}
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

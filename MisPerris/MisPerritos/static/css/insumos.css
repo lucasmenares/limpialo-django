@@ -1,0 +1,41 @@
+.masthead {
+    height: 90vh;
+    min-height: 500px;
+    background-image: url('../images/signup.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+.masthead h1{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold!important;
+    color: white;
+    font-size:48px;
+}
+.container-form{
+	max-width: 600px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+input{
+	border-radius: 30px!important;
+	border: 0px!important;
+}
+
+.btn-limpiar{
+	background-color: white;
+	color: #FF5B15;
+	padding: 5px 30px;
+	font-weight: bolder;
+}
+
+.btn-enviar{
+	background-color: #FF5B15;
+	color: white;
+	padding: 5px 30px;
+	font-weight: bolder;
+}

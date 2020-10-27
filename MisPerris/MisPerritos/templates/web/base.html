@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,500;0,700;1,400&display=swap" rel="stylesheet">	
+	<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+	{% block estilos %}
+	{% endblock estilos %}
+	<script src="https://kit.fontawesome.com/4934c4449b.js" crossorigin="anonymous"></script>
+	<title>Limpialo</title>
+	<link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body>
+
+<!-- Botón Wsp -->
+<table class="whatsapp-button">
+	<tr>
+		<td>
+			<a href="https://api.whatsapp.com/send?phone=56959109524" class="nav-link text-white" target="_blank"><i class="fa fa-whatsapp fa-2x" style="width: 35px; height: 30px;"></i></a>
+		</td>
+		<td>
+			<a href="https://api.whatsapp.com/send?phone=56959109524" class="nav-link text text-white" target="_blank"><small>Hablemos por <br /> WhatsApp</small></a>
+		</td>
+	</tr>
+</table>
+	<!-- End Wsp -->
+
+<!-- Header -->
+<header class="masthead">
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark pt-4 px-3 px-md-5">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="{% url 'INDEX' %}"><img src="{% static 'images/logo-blanco.png' %}" alt=""></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="{% url 'INDEX' %}"> Inicio</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="{% url 'VISION' %}">Visión</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="{% url 'DIRECCION' %}">Dirección</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="{% url 'GALERIA' %}">Galería</a>
+					</li>
+					<li class="nav-item active">
+							<a class="nav-link" href="{% url 'REGISTRO' %}">Registro</a>
+						</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- End Nav -->
+	{% block header %}
+
+	{% endblock header %}
+</header>
+
+{% block contenido %}
+
+{% endblock contenido %}
+
+<!--Footer Desktop-->
+<div class="d-none d-md-block" style="background-color:#F7FAFC ;">
+	<div class="container-fluid">
+		<div class="row text-center my-auto py-auto">
+			<div class="col my-auto">
+				<img src="{% static 'images/logo-negro.png' %}" alt="" class="mr-5 w-50" style="position: relative;top: 13px;">
+				<br>
+				<img src="{% static 'images/logo-naranjo.png' %}" alt="" class="ml-5 w-50">
+			</div>
+			<div class="col mt-4 text-center">				
+				<p style="font-size: 20px;">
+					Lunes a Viernes 09:00 a 19:00 <br>
+					Sábado 11:00 a 18:00
+				</p>
+			</div>
+			<div class="col mt-4 text-center">				
+				<div class="row">
+					<div class="col-6">
+						<p>
+							<a href="">Visión</a>
+						</p>
+						<p>
+							<a href="">Dirección</a>
+						</p>
+					</div>
+					<div class="col-6">
+						<p>
+							<a href="">Galería</a>
+						</p>
+						<p>
+							<a href="">Registro</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col mt-4 text-center">
+				<p style="font-size: 20px;">
+					Av inventado Número 3214 <br>
+					La Florida, Santiago, Chile
+				</p>
+			</div> 
+			<div class="col footer-bubble aling-items-center">
+				<div class="row mt-3">
+					<div class="col">
+						<i class="fab fa-facebook-square fb" style="font-size: 70px;"></i>
+					</div>
+					<div class="col">
+							<i class="fab fa-instagram-square fb" style="font-size:70px"></i>
+					</div> 
+					<div class="col">
+							<i class="fab fa-twitter-square fb" style="font-size: 70px;"></i>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!--Footer-->
+<div class="d-block d-md-none" style="background-color:#F7FAFC ;">
+	<div class="container-fluid">
+		<div class="row text-center my-auto py-auto">
+			<div class="col-9">
+				<div class="row" style="margin-top: 40px;">
+					<div class="col my-auto">
+						<img src="{% static 'images/logo-negro.png' %}" alt="" class="mr-5 w-50" style="position: relative;top: 0px;">
+						<br>
+						<img src="{% static 'images/logo-naranjo.png' %}" alt="" class="ml-5 w-50">
+					</div>
+					<div class="col-12 mt-4 text-center">
+						<p style="font-size: 15px;">
+							Av inventado 3954 <br>
+							La Florida
+						</p>
+					</div>
+					<div class="col-12 mt-4 text-center">
+						<div class="row">
+							<div class="col-6">
+								<p>
+									<a href="">Visión</a>
+								</p>
+								<p>
+									<a href="">Dirección</a>
+								</p>
+							</div>
+							<div class="col-6">
+								<p>
+									<a href="">Galería</a>
+								</p>
+								<p>
+									<a href="">Registro</a>
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-12 mt-4 text-center">
+						<p style="font-size: 15px;">
+								Lunes a Viernes 09:00 a 19:00 <br>
+								Sábado 11:00 a 18:00
+							</p>
+					</div> 
+				</div>
+			</div>			
+			<div class="col-3 footer-bubble aling-items-center">				
+				<div class="row mt-4">
+					<div class="col-12">
+						<i class="fab fa-facebook-square fb" style="font-size: 75px;"></i>
+					</div>
+					<div class="col-12 mt-3">
+							<i class="fab fa-instagram-square fb" style="font-size:75px"></i>
+					</div> 
+					<div class="col-12 mt-3">
+							<i class="fab fa-twitter-square fb" style="font-size: 75px;"></i>
+					</div>
+					<div class="col-12 mt-3">
+							<i class="fab fa-whatsapp-square fb" style="font-size: 75px;"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% block js %}
+{% endblock js %}
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+</html>

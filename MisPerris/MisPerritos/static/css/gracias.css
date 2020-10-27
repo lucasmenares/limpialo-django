@@ -1,0 +1,40 @@
+.masthead{
+	height: 100vh;
+}
+
+@media (max-width:320px){
+	.container-gracias{
+		padding-top: 0px!important;
+	}
+}
+
+@media (max-width:992px){
+	.gracias-title{
+		font-size: 30px!important;
+	}
+	.gracias-text{
+		font-size: 25px;
+	}
+	.row-gracias{
+		padding: 25px!important;
+	}
+}
+
+.btn-inicio{
+    width: 150px;
+    height: 48px;
+    background: #E65F00;
+    border-radius: 5px;
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 126.4%;
+    color: #ffffff;    
+    text-align: center;
+}
+
+.btn-inicio:hover{
+    background-color: rgba(222,94,28,.9);
+    color:white;
+}

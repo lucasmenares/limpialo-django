@@ -1,0 +1,217 @@
+html{
+	font-family: 'Poppins', sans-serif!important;
+}
+
+/* Globales */
+hr {
+	width: 100px!important;
+	border-top: 1px solid #FF5B15;
+}
+
+/* Header */
+
+
+/* Ipad */
+@media (min-width: 767px) and (max-width: 1024px){
+    .masthead{
+        height: 100vh!important
+    }
+}
+
+/* Mobile */
+@media (max-width: 766px){
+    .header-title{
+        font-size: 35px!important
+    }
+    .masthead{
+        height: 100vh!important;
+    }
+    .header-subtitle{
+        font-size: 15px!important
+    }
+}
+
+/* Iphone 5 */
+@media (max-width: 320px) {
+    .div-header{
+        height: 65%!important;
+    }
+    .header-title{
+        font-size: 25px!important;
+    }
+    .header-subtitle{
+        font-size: 15px!important
+    }
+    .logo-navbar{
+        width: 150px!important;
+    }
+    .sublogo-navbar{
+        width: 150px!important
+    }    
+}
+
+.masthead {
+  height: 90vh;
+  min-height: 500px;
+  background-image: url('../images/header.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.masthead h1{
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: bold!important;
+	color: white;
+	font-size:48px;
+}
+.navbar-nav .nav-link{
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 126.4%;
+    text-align: right;
+    color: #FFFFFF;
+}
+.lead{
+    color: #ffffff;
+}
+.btn-header{
+    width: 249px;
+    height: 48px;
+    background: #E65F00;
+    border-radius: 5px;
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 126.4%;
+    color: #ffffff;    
+    text-align: center;
+}
+
+.btn-header:hover{
+    background-color: rgba(222,94,28,.9);
+    color:white;
+}
+
+/* Marcas */
+
+/* Desktop */
+@media (min-width:992px){
+	.w-xl-75{
+		width: 75%!important;
+	}
+}
+
+/* Nuesto Trabajo */
+
+@media (min-width:992px){
+	.container-trabajo{
+		padding: 50px 100px 15px 100px;
+	}
+}
+
+.our-work-title{
+	font-size:28px;
+	font-weight: bold;
+	padding-bottom: 25px;
+}
+
+.our-work-text{
+	font-size: 18px;
+	padding-bottom: 25px;
+}
+
+/* Slider Nuestro Trabajo */
+
+.carousel-item {
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height:65vh!important;
+}
+
+.carousel-control-prev-icon{
+	color: #FF5B15!important;
+	background-image: url();
+}
+
+.carousel-indicators li{
+	width: 20px!important;
+	height: 20px!important;
+	border-radius: 100%!important;
+	background-color: #FF5B15;
+}
+
+/* Clientes */
+
+.client-text{
+	font-size: 20px;
+}
+
+.circular--landscape {
+	display: inline-block;
+	position: relative;
+	width: 40px;
+	height: 40px;
+	overflow: hidden;
+	border-radius: 50%;
+  }
+  
+  .circular--landscape img {
+	width: auto;
+	height: 100%;
+  }
+
+  @media (min-width:1600px){
+		.padding-desktop{
+			padding: 25px 200px;
+		}
+	}
+
+	@media (max-width:1200px){
+		.padding-desktop{
+			padding: 15px 15px;
+		}
+	}
+  /* Footer */
+
+  .footer-bubble{
+	background-color: #FF5B15;
+	border-top-left-radius: 50px;
+  }
+  .fb{
+	  color:white!important
+  }
+   p a{
+	  color:black!important
+  }
+
+  /* WSP Botón */
+  .whatsapp-button{
+    background: rgba(33, 176, 56, 0.7);
+    position: fixed;
+    right: 0;
+    top: 120px;
+    z-index: 1200;
+    right: -120px;
+}
+.whatsapp-button, .whatsapp-button td{
+    transition: 0.5s;
+}
+.whatsapp-button .text{
+    opacity: 0;
+}
+.whatsapp-button:hover{
+    background: #20B039;
+    right: 0px;
+}
+.whatsapp-button:hover td{
+    display: table-cell !important;   
+}
+.whatsapp-button:hover .text{
+    opacity: 1;
+}

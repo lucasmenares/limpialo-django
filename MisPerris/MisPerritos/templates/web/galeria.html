@@ -1,0 +1,46 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block estilos %}
+    <link rel="stylesheet" href="{% static 'css/galeria.css' %}">
+    <link rel="stylesheet" href="{% static 'dist/css/lightbox.min.css' %}">
+{% endblock estilos %}
+{% block header %}
+    <div class="container h-100">
+        <div class="row align-items-center div-header" style="height: 75%">
+            <div class="col-12 text-center">
+                <h1 class="header-title">Revisa nuestro <br> Trabajo</h1>
+                <p class="lead my-4 header-subtitle">En Limpialo te ayudaremos a dejar tu <br> auto como nuevo</p>
+                <a href="registro.html"></a>
+            </div>
+        </div>
+    </div>
+{% endblock header %}
+{% block contenido %}
+
+    <div>
+        <div class="container pt-5 mb-5 text-center galeria">
+            <h2>Galería fotográfica</h2>
+            <hr>
+        </div>
+    </div>
+    <!-- Galeria -->
+    <div>
+        <div class="container imgGaleria mb-5">
+            <div class="row">        
+                {% for item in autos%}
+                    <div class="col-6 col-xl-4 px-1 my-1">
+                        <div class="">
+                            <a href="{{item.imagen.url}}" data-lightbox="Autos">
+                                <img src="{{item.imagen.url}}" alt="" style="width: 100%;">
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock contenido %}
+{% block js %}
+    <script src="{% static 'dist/js/lightbox-plus-jquery.min.js' %}"></script>
+{% endblock js %}

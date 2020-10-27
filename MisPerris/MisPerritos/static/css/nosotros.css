@@ -1,0 +1,31 @@
+.nosotros-img{
+	background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.masthead{
+	background-image: url(../images/carwash.jpg);
+}
+
+
+@media (min-width: 992px){
+	.container-nosotros{
+		padding: 0px 150px 0px 150px
+	}
+	.nosotros-img-bottom-right{
+		border-radius: 30px;
+		border-bottom-right-radius: 0px!important;
+	}
+	
+	.nosotros-img-medium-left{
+		border-radius: 30px;
+		border-bottom-left-radius: 0px!important;
+		border-top-left-radius: 0px!important;
+	}
+	
+	.nosotros-img-top-right{
+		border-radius: 30px;
+		border-top-right-radius: 0px!important;
+	}
+}
