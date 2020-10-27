@@ -1,10 +1,13 @@
 from django.contrib import admin
 from .models import SliderPhoto,Nosotros,Mision,GaleryPhoto,Usuario,Insumo
 
+admin.site.site_header = 'Admin Limpialo'
+admin.site.site_title = 'Bienvenido al panel de administracion de Limpialo'
+
 class SliderPhotoAdmin(admin.ModelAdmin):
-    list_display= ['title','image']
-    search_fields= ['title','image']
-    #list_filter=[]
+    list_display= ['title','image', 'created']
+    search_fields= ['title','image', 'created']
+    list_filter=['created']
     list_per_page=10
 
 class MisionAdmin(admin.ModelAdmin):
