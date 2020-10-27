@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class SliderPhoto(models.Model):
-    name = models.CharField(max_length=15)
+    title = models.CharField(max_length=15)
     image = models.ImageField(upload_to='car',null=False)
 
     def __str__(self):
@@ -24,13 +24,12 @@ class Nosotros(models.Model):
     def __str__(self):
         return self.title
 
-class SliderGaleria(models.Model):
-    ident = models.CharField(max_length=15,primary_key=True)
-    imagen = models.ImageField(upload_to='car',null=True)
-    texto = models.CharField(max_length=65)
+class GaleryPhoto(models.Model):
+    title = models.CharField(max_length=15)
+    image = models.ImageField(upload_to='car',null=False)
 
     def __str__(self):
-        return self.ident
+        return self.title
 
 #Formulario
 class Usuario(models.Model):

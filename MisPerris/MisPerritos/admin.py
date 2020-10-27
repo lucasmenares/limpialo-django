@@ -1,5 +1,23 @@
 from django.contrib import admin
-from .models import SliderPhoto,Nosotros,Mision,SliderGaleria,Usuario,Insumo
+from .models import SliderPhoto,Nosotros,Mision,GaleryPhoto,Usuario,Insumo
+
+class SliderPhotoAdmin(admin.ModelAdmin):
+    list_display= ['title','image']
+    search_fields= ['title','image']
+    #list_filter=[]
+    list_per_page=10
+
+class MisionAdmin(admin.ModelAdmin):
+    list_display= ['title','text','image']
+    search_fields= ['title','text','image']
+    #list_filter=[]
+    list_per_page=10
+
+class GaleryPhotoAdmin(admin.ModelAdmin):
+    list_display= ['title','image']
+    search_fields= ['title','image']
+    #list_filter=[]
+    list_per_page=10
 
 class UsuarioAdmin(admin.ModelAdmin):
     list_display= ['nombre','apellido','email', 'usuario']
@@ -21,9 +39,9 @@ class NosotrosAdmin(admin.ModelAdmin):
         return False
 
 # Register your models here.
-admin.site.register(SliderPhoto)
+admin.site.register(SliderPhoto, SliderPhotoAdmin)
 admin.site.register(Nosotros, NosotrosAdmin)
-admin.site.register(Mision)
-admin.site.register(SliderGaleria)
+admin.site.register(Mision, MisionAdmin)
+admin.site.register(GaleryPhoto, GaleryPhotoAdmin)
 admin.site.register(Usuario, UsuarioAdmin)
 admin.site.register(Insumo, InsumoAdmin)

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import SliderPhoto,Nosotros,Mision,SliderGaleria,Usuario,Insumo
+from .models import SliderPhoto,Nosotros,Mision,GaleryPhoto,Usuario,Insumo
 
 # Create your views here.
 def index(request):
@@ -21,9 +21,9 @@ def insumos(request):
 	return render(request, 'web/registro/insumos.html')
 
 def galeria(request):
-	autos = SliderGaleria.objects.all()
+	photos = GaleryPhoto.objects.all()
 	#return render(request, 'web/galeria.html')
-	return render(request,'web/galeria.html',{'autos':autos})
+	return render(request,'web/galeria.html',{'photos':photos})
 
 def direccion(request):
 	return render(request, 'web/direccion.html')

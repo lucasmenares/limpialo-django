@@ -27,11 +27,11 @@
     <div>
         <div class="container imgGaleria mb-5">
             <div class="row">        
-                {% for item in autos%}
+                {% for item in photos%}
                     <div class="col-6 col-xl-4 px-1 my-1">
                         <div class="">
-                            <a href="{{item.imagen.url}}" data-lightbox="Autos">
-                                <img class="galeria-img" alt="" style="width: 100%;background-image: url('{{item.imagen.url}}');">
+                            <a href="{{item.image.url}}" data-lightbox="Autos">
+                                <img class="galeria-img" alt="" style="width: 100%;background-image: url('{{item.image.url}}');">
                             </a>
                         </div>
                     </div>
