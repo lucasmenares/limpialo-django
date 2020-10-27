@@ -19,25 +19,24 @@
 	<div class="pt-5">
 		<div class="container-fluid pb-5 container-nosotros">
 			<!-- Texto Nosotros -->
+			
 			<div class="row justify-content-center px-5 pt-5">
 				<div class="col-12 col-xl-6 my-auto px-0 px-md-5">
 					<div class="">
-						<h2 class="text-center" style="font-size: 40px">Nosotros</h2>
+						<h2 class="text-center" style="font-size: 40px">{{nosotros.title}}</h2>
 						<hr>
 						<p class="mt-5 text-justify" style="font-size: 18px"> <!--AQUI HAY QUE EDITAR PARA PONER LA MISIÓN-->
-							Somos un equipo de trabajo con más de 10 años de experiencia en el desarrollo de proyectos de interiorismo y mobiliarios a medida de alta calidad. <br> <br> 
-							En Custa te acompañamos en cada etapa de tu proyecto: te asesoramos en la elección de materiales, colores, muebles, artefactos u otros a incorporar. 
-							Con la idea de crear un diseño único, con identidad propia que refleje tus gustos, otorgando mayor funcionalidad, optimización de espacio, confort, 
-							estética y mejorando tu calidad de vida.
+							{{nosotros.text}}
 						</p>
 					</div>
 				</div>
 				<!-- Foto Nosotros -->
-				<div class="col-12 col-xl-6 nosotros-img" style="background-image: url({% static 'images/nosotros.jpg' %});border-radius: 50px;">
+				<div class="col-12 col-xl-6 nosotros-img" style="background-image: url('{{ nosotros.image.url }}');border-radius: 50px;">
 				</div>
 				<!-- End Foto -->
 			</div>
 			<!-- End Texto -->
+			
 		</div>
 		<div class="container" style="margin-top: 100px">
 		<!-- FOR MISION -->

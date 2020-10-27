@@ -16,6 +16,14 @@ class Mision(models.Model):
     def __str__(self):
         return self.title
 
+class Nosotros(models.Model):
+    title = models.CharField(max_length=15)
+    text = models.TextField(max_length=450)
+    image = models.ImageField(upload_to='car',null=False)
+
+    def __str__(self):
+        return self.title
+
 class SliderGaleria(models.Model):
     ident = models.CharField(max_length=15,primary_key=True)
     imagen = models.ImageField(upload_to='car',null=True)

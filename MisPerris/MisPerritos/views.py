@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import SliderPhoto,Mision,SliderGaleria,Usuario,Insumo
+from .models import SliderPhoto,Nosotros,Mision,SliderGaleria,Usuario,Insumo
 
 # Create your views here.
 def index(request):
@@ -7,8 +7,9 @@ def index(request):
 	return render(request,'web/index.html',{'autos':autos})
 
 def vision(request):
+	nosotros = Nosotros.objects.first()
 	mision = Mision.objects.all()
-	return render(request,'web/vision.html',{'mision':mision})
+	return render(request,'web/vision.html',{'nosotros':nosotros,'mision':mision})
 
 def registro(request):
 	return render(request, 'web/registro/registro.html')
