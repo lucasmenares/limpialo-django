@@ -2,6 +2,19 @@
     background-image: url(../images/lavando3.jpg);
 }
 
+.galeria-img{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 150px 0px;
+}
+
+@media (max-width: 992px){
+    .galeria-img{
+        padding: 100px 0px!important;
+        }   
+    }
+
 .galeria h2 {
     font-weight: bolder;
 }
