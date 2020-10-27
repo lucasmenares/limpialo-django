@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import SliderPhoto,MisionVision,SliderGaleria,Usuario,Insumo
+from .models import SliderPhoto,Mision,SliderGaleria,Usuario,Insumo
 
 # Create your views here.
 def index(request):
@@ -7,16 +7,8 @@ def index(request):
 	return render(request,'web/index.html',{'autos':autos})
 
 def vision(request):
-	obj = MisionVision.objects.get(ident=0)
-	context = {
-		'mision': obj.mision,
-		'vision': obj.vision
-	}
-	#mision = MisionVision.objects.all()
-	#test = MisionVision.objects.all()
-	#return render(request, 'web/vision.html')
-	#return render(request, 'web/vision.html',{'mision':mision})
-	return render(request,'web/vision.html',context)
+	mision = Mision.objects.all()
+	return render(request,'web/vision.html',{'mision':mision})
 
 def registro(request):
 	return render(request, 'web/registro/registro.html')

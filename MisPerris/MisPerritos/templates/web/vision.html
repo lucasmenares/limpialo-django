@@ -22,15 +22,13 @@
 			<div class="row justify-content-center px-5 pt-5">
 				<div class="col-12 col-xl-6 my-auto px-0 px-md-5">
 					<div class="">
-						<h2 class="text-center" style="font-size: 40px">Misión</h2>
+						<h2 class="text-center" style="font-size: 40px">Nosotros</h2>
 						<hr>
 						<p class="mt-5 text-justify" style="font-size: 18px"> <!--AQUI HAY QUE EDITAR PARA PONER LA MISIÓN-->
-							<!--Somos un equipo de trabajo con más de 10 años de experiencia en el desarrollo de proyectos de interiorismo y mobiliarios a medida de alta calidad. <br> <br> 
+							Somos un equipo de trabajo con más de 10 años de experiencia en el desarrollo de proyectos de interiorismo y mobiliarios a medida de alta calidad. <br> <br> 
 							En Custa te acompañamos en cada etapa de tu proyecto: te asesoramos en la elección de materiales, colores, muebles, artefactos u otros a incorporar. 
 							Con la idea de crear un diseño único, con identidad propia que refleje tus gustos, otorgando mayor funcionalidad, optimización de espacio, confort, 
-							estética y mejorando tu calidad de vida.-->
-
-							{{mision}}
+							estética y mejorando tu calidad de vida.
 						</p>
 					</div>
 				</div>
@@ -41,58 +39,24 @@
 			</div>
 			<!-- End Texto -->
 		</div>
-
-		<!-- Item -->
 		<div class="container" style="margin-top: 100px">
+		<!-- FOR MISION -->
+			{% for item in mision %}
 			<div class="row">
-				<div class="col-xl-6 col-12">
-						<div class="col-12 nosotros-img nosotros-img-bottom-right" style="background-image: url(https://www.mixsrl.com/wp-content/uploads/2018/10/shutterstock_139337444-copia-2.jpg); height: 50vh;">
-							
+				<div class="col-xl-6 col-12 {% if forloop.counter0|divisibleby:"2" %} order-xl-0 {% else %} order-xl-1 {% endif%}">
+						<div class="col-12 nosotros-img {% if forloop.first %} nosotros-img-first {% elif forloop.last and forloop.counter0|divisibleby:"2" %} nosotros-img-last-left {% elif forloop.last and forloop.counter0|divisibleby:"1" %} nosotros-img-last-right {% elif forloop.counter0|divisibleby:"2" %} nosotros-img-left {% else %} nosotros-img-right {% endif%}" style="background-image: url({{item.image.url}}); height: 50vh;">
 						</div>
 				</div>
 				<div class="col-xl-6 col-12 px-5 my-auto">
-					<h3 class="text-center mt-4 mt-xl-0" style="font-size: 40px">Visión</h3>
-					<hr>
-					<p class="mt-4" style="font-size: 20px"> <!--AQUI HAY QUE EDITAR PARA PONER LA VISIÓN-->
-						<!--Sabemos que hoy se vive rápido, por esto nuestro equipo de profesionales realizarán su tarea lo más rápido posible para que usted tenga su auto en poco tiempo.-->
-						
-						{{vision}}
-					</p>
-				</div>
-			</div>
-			<!-- End Item -->
-			<!-- Item -->
-			<div class="row mt-5">
-				<div class="col-xl-6 col-12 px-5 my-auto order-12 mt-5">
-					<h3 class="text-center mt-4 mt-xl-0" style="font-size: 40px">Calidad</h3>
+					<h3 class="text-center mt-4 mt-xl-0" style="font-size: 40px"> {{item.title}} </h3>
 					<hr>
 					<p class="mt-4" style="font-size: 20px">
-						Realizamos nuestro trabajo al pie de la letra, asegurese que su auto se encontrará como nuevo por dentro y por fuera.
-					</p>
-				</div>
-				<div class="col-xl-6 col-12 mt-3 order-xl-12">
-					<div class="col-12 nosotros-img nosotros-img-medium-left" style="background-image: url(https://cadenaser00.epimg.net/ser/imagenes/2020/05/20/radio_murcia/1589965293_057033_1589973377_noticia_normal.jpg); height: 50vh;">
-						
-					</div>
-				</div>
-			</div>
-			<!-- End Item -->
-			<!-- Item -->
-			<div class="row mt-5">
-				<div class="col-xl-6 col-12">
-					<div class="col-12 proyecto-img nosotros-img-top-right" style="background-image: url(https://www.soundiegoonline.com/wp-content/uploads/2017/07/Car-Alarm-System-Myths.gif); height: 50vh;">
-						
-					</div>
-				</div>
-				<div class="col-xl-6 col-12 px-5 my-auto">
-					<h3 class="text-center mt-4 mt-xl-0" style="font-size: 40px">Seguridad</h3>
-					<hr>
-					<p class="mt-4" style="font-size: 20px">
-						Un auto es para muchos como su hijo, con nosotros su auto estará seguro hasta que usted vuelva a recogerlo.
+						{{item.text}}
 					</p>
 				</div>
 			</div>
-			<!-- End Item -->
+			{% endfor %}
+		<!-- END FOR MISION -->
 			<!-- Agenda -->
 			<div class="row" style="padding: 100px 0px 100px 0px">
 				<div class="col-12 col-xl-6 text-center">

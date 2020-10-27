@@ -13,19 +13,31 @@
 	.container-nosotros{
 		padding: 0px 150px 0px 150px
 	}
-	.nosotros-img-bottom-right{
-		border-radius: 30px;
+
+	.nosotros-img-first{
+		border-radius: 30px!important;
 		border-bottom-right-radius: 0px!important;
 	}
 	
-	.nosotros-img-medium-left{
+	.nosotros-img-left{
+		border-radius: 30px!important;
+		border-bottom-right-radius: 0px!important;
+		border-top-right-radius: 0px!important;
+	}
+	
+	.nosotros-img-right{
 		border-radius: 30px;
 		border-bottom-left-radius: 0px!important;
 		border-top-left-radius: 0px!important;
 	}
-	
-	.nosotros-img-top-right{
-		border-radius: 30px;
+
+	.nosotros-img-last-left{
+		border-radius: 30px!important;
 		border-top-right-radius: 0px!important;
+	}
+
+	.nosotros-img-last-right{
+		border-radius: 30px!important;
+		border-top-left-radius: 0px!important;
 	}
 }

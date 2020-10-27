@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SliderPhoto,MisionVision,SliderGaleria,Usuario,Insumo
+from .models import SliderPhoto,Mision,SliderGaleria,Usuario,Insumo
 
 class UsuarioAdmin(admin.ModelAdmin):
     list_display= ['nombre','apellido','email', 'usuario']
@@ -15,7 +15,7 @@ class InsumoAdmin(admin.ModelAdmin):
 
 # Register your models here.
 admin.site.register(SliderPhoto)
-admin.site.register(MisionVision)
+admin.site.register(Mision)
 admin.site.register(SliderGaleria)
 admin.site.register(Usuario, UsuarioAdmin)
 admin.site.register(Insumo, InsumoAdmin)

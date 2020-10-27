@@ -2,20 +2,19 @@ from django.db import models
 
 # Create your models here.
 class SliderPhoto(models.Model):
-    nombre = models.CharField(max_length=15)
-    imagen = models.ImageField(upload_to='car',null=False)
+    name = models.CharField(max_length=15)
+    image = models.ImageField(upload_to='car',null=False)
 
     def __str__(self):
-        return self.nombre
+        return self.name
 
-class MisionVision(models.Model):
-    ident = models.CharField(max_length=15,primary_key=True)
-    mision = models.TextField()
-    vision = models.TextField()
+class Mision(models.Model):
+    title = models.CharField(max_length=15)
+    text = models.TextField(max_length=450)
+    image = models.ImageField(upload_to='car',null=False)
     
-
     def __str__(self):
-        return self.ident
+        return self.title
 
 class SliderGaleria(models.Model):
     ident = models.CharField(max_length=15,primary_key=True)
