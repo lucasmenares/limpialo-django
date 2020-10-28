@@ -41,20 +41,38 @@
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ml-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'INDEX' %}"> Inicio</a>
+						<a class="nav-link text-center" href="{% url 'INDEX' %}"> Inicio</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'VISION' %}">Visión</a>
+						<a class="nav-link text-center" href="{% url 'VISION' %}">Visión</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'DIRECCION' %}">Dirección</a>
+						<a class="nav-link text-center" href="{% url 'DIRECCION' %}">Dirección</a>
 					</li>
 					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'GALERIA' %}">Galería</a>
+						<a class="nav-link text-center" href="{% url 'GALERIA' %}">Galería</a>
 					</li>
+					{% if user.is_authenticated %}
 					<li class="nav-item active">
-							<a class="nav-link" href="{% url 'REGISTRO' %}">Registro</a>
-						</li>
+						<a class="nav-link text-center" href="{% url 'INSUMOS' %}">Registro Insumos</a>
+					</li>
+					{% else %}
+					<li class="nav-item active">
+						<a class="nav-link text-center" href="{% url 'USUARIO' %}">Registro Usuario</a>
+					</li>
+					{% endif %}
+					{% if user.is_authenticated %}
+					<li class="nav-item active">
+						<a class="nav-link text-center" style="font-weight:bold" href="{% url 'REGISTRO' %}">Bienvenido {{user.first_name}} {{user.last_name}} </a>
+					</li>
+					<li class="nav-item active" style="background:red">
+						<a class="nav-link text-center" href="{% url 'LOGOUT' %}">Cerrar Sesion</a>
+					</li>
+					{% else %}
+					<li class="nav-item active" style="background:#E65F00">
+						<a class="nav-link text-center" href="{% url 'LOGIN' %}">Iniciar Sesion</a>
+					</li>
+					{% endif %}
 				</ul>
 			</div>
 		</div>

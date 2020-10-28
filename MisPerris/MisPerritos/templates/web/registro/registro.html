@@ -25,15 +25,8 @@
 		</div>
 		<div class="container-fluid pb-5 text-center">
 			<div class="row justify-content-center px-4 px-xl-2">
-				<div class="col-12 col-xl-4 mr-0 mr-xl-5 registro-border" style="background-color: #F7FAFC;">
-					<a href="{% url 'USUARIO' %}">
-						<div>
-							<a href="{% url 'USUARIO' %}"><p class="mb-0">Usuario</p></a>
-							<hr class="hr mt-0">
-						</div>
-					</a>
-					</div>			
-					<div class="col-12 col-xl-4 mr-0 ml-xl-5 registro-border mt-5 mt-xl-0" style="background-color: #F7FAFC;">
+				{% if user.is_authenticated %}
+				<div class="col-12 col-xl-12 mr-0 ml-xl-5 registro-border mt-5 mt-xl-0" style="background-color: #F7FAFC;">
 						<a href="{% url 'INSUMOS' %}">
 							<div>
 								<p class="mb-0">Insumos</p>
@@ -41,6 +34,16 @@
 							</div>
 						</a>
 					</div>
+				{% else %}
+				<div class="col-12 col-xl-12 mr-0 mr-xl-5 registro-border" style="background-color: #F7FAFC;">
+					<a href="{% url 'USUARIO' %}">
+						<div>
+							<a href="{% url 'USUARIO' %}"><p class="mb-0">Usuario</p></a>
+							<hr class="hr mt-0">
+						</div>
+					</a>
+					</div>
+				{% endif %}		
 				</div>
 			</div>	
 		</div>

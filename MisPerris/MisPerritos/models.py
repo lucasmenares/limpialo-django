@@ -7,7 +7,7 @@ class SliderPhoto(models.Model):
     created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.name
+        return self.title
 
 class Mision(models.Model):
     title = models.CharField(max_length=15)
