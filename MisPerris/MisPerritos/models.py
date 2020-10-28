@@ -32,23 +32,12 @@ class GaleryPhoto(models.Model):
     def __str__(self):
         return self.title
 
-#Formulario
-class Usuario(models.Model):
-    nombre = models.TextField(max_length=80)
-    apellido = models.TextField(max_length=80)
-    email = models.CharField(max_length=80,primary_key=True)
-    usuario = models.CharField(max_length=80)
-    contrasena = models.CharField(max_length=80)
-    confirmar = models.CharField(max_length=80)
-
-    def __str__(self):
-        return self.email
-
 class Insumo(models.Model):
-    nombre = models.TextField(max_length=120,primary_key=True)
-    precio = models.IntegerField()
-    descripcion = models.CharField(max_length=200)
+    name = models.TextField(max_length=120)
+    price = models.IntegerField()
+    description = models.CharField(max_length=200,blank=True,null=True)
     stock = models.IntegerField()
-
+    created = models.DateTimeField(auto_now_add=True)
+    
     def __str__(self):
-        return self.nombre
+        return self.name

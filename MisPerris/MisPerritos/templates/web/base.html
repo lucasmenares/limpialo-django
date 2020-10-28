@@ -65,14 +65,17 @@
 					</li>
 					{% if user.is_authenticated %}
 					<li class="nav-item active">
-						<a class="nav-link text-center" href="{% url 'INSUMOS' %}">Registro Insumos</a>
+						<a class="nav-link text-center" href="{% url 'INSUMOS' %}">Registrar Insumos</a>
 					</li>
 					{% else %}
 					<li class="nav-item active">
-						<a class="nav-link text-center" href="{% url 'USUARIO' %}">Registro Usuario</a>
+						<a class="nav-link text-center" href="{% url 'USUARIO' %}">Registrarse</a>
 					</li>
 					{% endif %}
 					{% if user.is_authenticated %}
+					<li class="nav-item active">
+						<a class="nav-link text-center" href="{% url 'REGISTRO' %}">Administracion </a>
+					</li>
 					<li class="nav-item active">
 						<a class="nav-link text-center" style="font-weight:bold" href="{% url 'REGISTRO' %}">Bienvenido {{user.first_name}} {{user.last_name}} </a>
 					</li>

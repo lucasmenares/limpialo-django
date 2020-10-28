@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SliderPhoto,Nosotros,Mision,GaleryPhoto,Usuario,Insumo
+from .models import SliderPhoto,Nosotros,Mision,GaleryPhoto,Insumo
 
 admin.site.site_header = 'Admin Limpialo'
 admin.site.site_title = 'Bienvenido al panel de administracion de Limpialo'
@@ -22,15 +22,9 @@ class GaleryPhotoAdmin(admin.ModelAdmin):
     #list_filter=[]
     list_per_page=10
 
-class UsuarioAdmin(admin.ModelAdmin):
-    list_display= ['nombre','apellido','email', 'usuario']
-    search_fields= ['nombre','apellido','email','usuario']
-    #list_filter=[]
-    list_per_page=10
-
 class InsumoAdmin(admin.ModelAdmin):
-    list_display= ['nombre','precio','descripcion','stock']
-    search_fields= ['nombre','precio','descripcion','stock']
+    list_display= ['name','price','description','stock']
+    search_fields= ['name','price','description','stock']
     #list_filter=[]
     list_per_page=10
 
@@ -46,5 +40,4 @@ admin.site.register(SliderPhoto, SliderPhotoAdmin)
 admin.site.register(Nosotros, NosotrosAdmin)
 admin.site.register(Mision, MisionAdmin)
 admin.site.register(GaleryPhoto, GaleryPhotoAdmin)
-admin.site.register(Usuario, UsuarioAdmin)
 admin.site.register(Insumo, InsumoAdmin)

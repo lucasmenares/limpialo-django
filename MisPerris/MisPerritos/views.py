@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from .models import SliderPhoto,Nosotros,Mision,GaleryPhoto,Usuario,Insumo
+from .models import SliderPhoto,Nosotros,Mision,GaleryPhoto,Insumo
 # Import Modelo de tablas User
 from django.contrib.auth.models import User
 # Import Libreria de autentificacion
 from django.contrib.auth import authenticate,logout,login as login_auth
 #Import decorador para impedir ingreso de paginas sin estar registrado
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required,permission_required
 
 
 # Create your views here.
@@ -22,6 +22,7 @@ def registro(request):
 	return render(request, 'web/registro/registro.html')
 
 def usuario(request):
+	autos = SliderPhoto.objects.all()
 	if request.POST:
 		name = request.POST.get("name")
 		lastName = request.POST.get("lastname")
@@ -30,25 +31,33 @@ def usuario(request):
 		password = request.POST.get("password")
 		password2 = request.POST.get("password2")
 		try:
-			user = User.objects.get(username=name)
+			user = User.objects.get(username=username)
 			message = 'El nombre de usuario ya esta en uso'
 			return render(request,'web/registro/usuario.html',{'error':message})
 		except:
-			if password != password2:
-				message = "Las contrasenas no coinciden"
+			try:
+				user = User.objects.get(email=email)
+				message = 'El correo ya esta en uso'
 				return render(request,'web/registro/usuario.html',{'error':message})
-			user = User()
-			user.first_name = name
-			user.last_name = lastName
-			user.email = email
-			user.username = username
-			user.set_password(password)
-			user.save()
-			message = 'Gracias por registrate ' + user.first_name + ' ' + user.last_name + ', por favor ingrese a continuacion'
-			return render(request,'web/usuario/login.html',{'success':message})
+			except:
+				if password != password2:
+					message = "Las contrasenas no coinciden"
+					return render(request,'web/registro/usuario.html',{'error':message})
+				user = User()
+				user.first_name = name
+				user.last_name = lastName
+				user.email = email
+				user.username = username
+				user.set_password(password)
+				user.save()
+				message = 'Gracias por registrate ' + user.first_name + ' ' + user.last_name + ', Bienvenido a Limpialo'
+				us = authenticate(request,username=user,password=password)
+				login_auth(request,us)
+				return render(request,'web/index.html',{'user':us,'autos':autos,'success':message})
 	return render(request, 'web/registro/usuario.html')
 
 @login_required(login_url='/login/')
+@permission_required('MisPerris.add_insumo',login_url='/login/')
 def insumos(request):
 	return render(request, 'web/registro/insumos.html')
 
@@ -76,4 +85,5 @@ def login(request):
 
 def logout_view(request):
 	logout(request)
-	return render(request,'web/usuario/login.html')
+	message = "Cerraste sesion correctamente"
+	return render(request,'web/usuario/login.html',{'success':message})
