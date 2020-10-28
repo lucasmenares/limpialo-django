@@ -29,16 +29,23 @@ def usuario(request):
 		username = request.POST.get("username")
 		password = request.POST.get("password")
 		password2 = request.POST.get("password2")
-
-		user = User()
-		user.first_name = name
-		user.last_name = lastName
-		user.email = email
-		user.username = username
-		user.set_password(password)
-		user.save()
-		mensaje = 'Grabado correctamente'
-		return render(request,'web/registro/usuario.html',{'msg':mensaje})
+		try:
+			user = User.objects.get(username=name)
+			message = 'El nombre de usuario ya esta en uso'
+			return render(request,'web/registro/usuario.html',{'error':message})
+		except:
+			if password != password2:
+				message = "Las contrasenas no coinciden"
+				return render(request,'web/registro/usuario.html',{'error':message})
+			user = User()
+			user.first_name = name
+			user.last_name = lastName
+			user.email = email
+			user.username = username
+			user.set_password(password)
+			user.save()
+			message = 'Gracias por registrate ' + user.first_name + ' ' + user.last_name + ', por favor ingrese a continuacion'
+			return render(request,'web/usuario/login.html',{'success':message})
 	return render(request, 'web/registro/usuario.html')
 
 @login_required(login_url='/login/')
@@ -60,9 +67,11 @@ def login(request):
 		us = authenticate(request,username=user,password=password)
 		if us is not None and us.is_active:
 			login_auth(request,us)
-			return render(request,'web/index.html',{'user':us,'autos':autos})
+			message = "Ingresaste correctamente. Bienvenido a Limpialo " + us.first_name
+			return render(request,'web/index.html',{'user':us,'autos':autos,'success':message})
 		else:
-			return render(request,'web/usuario/login.html',{'msg':'usuario / contrasena incorrecta'})
+			message = "Usuario o contrasena incorrectos"
+			return render(request,'web/usuario/login.html',{'error':message})
 	return render(request, 'web/usuario/login.html')
 
 def logout_view(request):
