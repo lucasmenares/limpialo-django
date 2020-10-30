@@ -1,0 +1,109 @@
+{% extends "web/base.html" %}
+{% load static %}
+{% block estilos %}
+	<link rel="stylesheet" href="{% static 'css/registro.css' %}">
+	<link rel="stylesheet" href="{% static 'css/form.css' %}">
+	<link rel="stylesheet" href="{% static 'css/usuario.css' %}">
+{% endblock estilos %}
+
+{% block header %}
+	<div class="container h-100">
+		<div class="row align-items-center div-header" style="height: 75%">
+			<div class="col-12 text-center">
+				<h1 class="header-title">Administracion de <br> Insumos </h1>
+			</div>
+		</div>
+	</div>
+{% endblock header %}
+
+{% block contenido %}
+	<div class="py-5">	
+		<div class="container p-5">
+			<div class="col-12 text-center pb-5">
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+					Administrar Nuevo Insumo
+				</button>
+			</div>
+			<div class="col-12">
+				<table class="text-center table table-striped table-responsive-xl" style="border-radius:5px">
+				<thead class="thead-dark">
+					<tr>
+					<th scope="col">#</th>
+					<th scope="col">Nombre</th>
+					<th scope="col">Precio</th>
+					<th scope="col">Stock</th>
+					<th scope="col">Descripcion</th>
+					<th scope="col">Acciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in lista_insumos %}
+					<tr>
+					<th style="vertical-align: middle;" scope="row">{{item.id}}</th>
+					<td style="vertical-align: middle;">{{item.name}}</td>
+					<td style="vertical-align: middle;">{{item.price}}</td>
+					<td style="vertical-align: middle;">{{item.stock}}</td>
+					<td style="vertical-align: middle;">{{item.description}}</td>
+					<td>
+						<button class="btn btn-warning"><a href="{% url 'MODIFYI' item.name %}">Modificar </a></button> <br> 
+						<button class="btn btn-danger mt-2"><a href="{% url 'DELETEI' item.id %}">Eliminar </a></button>
+					</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+				</table>
+			</div> 
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content">
+		<div class="modal-header" style="border-bottom:0px!important">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+			</button>
+			</div>
+		<div class="modal-body">
+			<div class="row text-center row-form">
+				<div class="col-12" style="background:#F5F5F5;border-radius:50px;padding: 30px 75px 75px 75px;">
+					<h2 class="registrate-title" style="font-size:55px;font-weight: bolder;">Administra Insumos</h2>
+					<hr>
+					<div class="container-form mt-4 pb-4">
+						<form id="formInsumos" method="POST" action="{% url 'ADMINI' %}">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-12">
+									<input name="name" type="text" class="form-control" id="inputNombre" aria-describedby="nombreHelp" placeholder="Nombre">
+								</div>
+								<div class="col-6 mt-3">
+									<input name="price" type="number" class="form-control" id="inputPrecio" aria-describedby="precioHelp" placeholder="Precio">
+								</div>
+								<div class="col-6 mt-3">
+									<input name="stock" type="number" class="form-control" id="inputStock" aria-describedby="stockHelp" placeholder="Stock">
+								</div>
+								<div class="col-12 mt-3">
+									<input name="description" type="text" class="form-control" id="inputDescripcion" aria-describedby="descripcionHelp" placeholder="Descripción">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+				<button type="submit" name="action" value="delete" class="btn btn-enviar" onclick="return ValidarInsumos()">Borrar</button>
+				<button type="submit" name="action" value="update" class="btn btn-enviar" onclick="return ValidarInsumos()">Actualizar</button>
+				<button type="submit" name="action" value="register" class="btn btn-enviar" onclick="return ValidarInsumos()">Registrar</button>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock contenido %}
+
+{% block js %}
+	<script src="{% static 'js/validar.js' %}"></script>
+{% endblock js %}
