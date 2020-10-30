@@ -23,3 +23,15 @@ input{
 	padding: 5px 30px;
 	font-weight: bolder;
 }
+
+@media (min-width: 576px){
+	.modal-dialog {
+		max-width: 900px!important;
+		margin: 1.75rem auto;
+	}
+}
+
+.modal-content{
+	background-color: #F5F5F5;
+	border-radius: 25px;
+}

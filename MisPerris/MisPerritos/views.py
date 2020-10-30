@@ -56,11 +56,6 @@ def usuario(request):
 				return render(request,'web/index.html',{'user':us,'autos':autos,'success':message})
 	return render(request, 'web/registro/usuario.html')
 
-@login_required(login_url='/login/')
-@permission_required('MisPerris.add_insumo',login_url='/login/')
-def insumos(request):
-	return render(request, 'web/registro/insumos.html')
-
 def galeria(request):
 	photos = GaleryPhoto.objects.all()
 	return render(request,'web/galeria.html',{'photos':photos})
@@ -87,3 +82,106 @@ def logout_view(request):
 	logout(request)
 	message = "Cerraste sesion correctamente"
 	return render(request,'web/usuario/login.html',{'success':message})
+
+@login_required(login_url='/login/')
+@permission_required('MisPerris.add_insumo',login_url='/login/')
+def admin_insumo(request):
+	insumos = Insumo.objects.all()
+	if request.POST:
+		action = request.POST.get("action")
+		if action == "update":
+			name = request.POST.get("name")
+			price = request.POST.get("price")
+			description = request.POST.get("description")
+			stock = request.POST.get("stock")
+			try:
+				ins = Insumo.objects.get(name=name)
+				ins.name=name
+				ins.price=price
+				ins.description=description
+				ins.stock=stock
+				ins.save()
+				message = "Insumo modificado correctamente"
+				return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'success':message})
+			except :
+				message = "No se pudo modificar el insumo"
+				return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'error':message})
+		if action == "delete":
+			name = request.POST.get("name")
+			try:
+				i = Insumo.objects.get(name=name)
+				i.delete()
+				message="El insumo se elimino correctamente"
+				return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'success':message})
+			except :
+				message = "No se encontro el insumo que desea eliminar"
+				return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'error':message})
+		if action == "register":
+			name = request.POST.get("name")
+			price = request.POST.get("price")
+			description = request.POST.get("description")
+			stock = request.POST.get("stock")
+			try:
+				i = Insumo.objects.get(name=name)
+				message = "Insumo que desea agregar ya existe"
+				return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'error':message})
+			except:
+				ins = Insumo(
+					name=name,
+					price=price,
+					description=description,
+					stock=stock
+				)
+				ins.save()
+				message = "Insumo se grabo correctamente"
+				return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'success':message})
+	return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos})
+
+@login_required(login_url='/login/')
+@permission_required('MisPerris.add_insumo',login_url='/login/')
+def delete_insumo(request,id):
+	try:
+		ins = Insumo.objects.get(id=id)
+		ins.delete()
+		message = "Insumo eliminado correctamente"
+		insumos = Insumo.objects.all()
+		return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'success':message})
+	except:
+		message = "No se pudo eliminar el insumo"
+		insumos = Insumo.objects.all()
+		return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'error':message})
+	insumos = Insumo.objects.all()
+	return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos})
+
+@login_required(login_url='/login/')
+@permission_required('MisPerris.add_insumo',login_url='/login/')
+def modify_insumo(request,name):
+		try:
+			ins = Insumo.objects.get(name=name)
+			return render(request,'web/admin/modify_insumos.html',{'item':ins})
+		except:
+			insumos = Insumo.objects.all()
+			return render(request, 'web/admin/modify_insumos.html', {'lista_insumos':insumos})
+
+@login_required(login_url='/login/')
+@permission_required('MisPerris.add_insumo',login_url='/login/')
+def update(request):
+	if request.POST:
+		name = request.POST.get("name")
+		price = request.POST.get("price")
+		description = request.POST.get("description")
+		stock = request.POST.get("stock")
+		try:
+			ins = Insumo.objects.get(name=name)
+			ins.name=name
+			ins.price=price
+			ins.description=description
+			ins.stock=stock
+			ins.save()
+			insumos = Insumo.objects.all()
+			message = "Insumo modificado correctamente"
+			return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'success':message})
+		except :
+			insumos = Insumo.objects.all()
+			message = "No se pudo modificar el insumo"
+			return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'error':message})
