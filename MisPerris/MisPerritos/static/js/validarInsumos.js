@@ -29,10 +29,26 @@ function validarDescripcion(){
         if (descripcion.value.length >= 3 && descripcion.value.length <= 200) {
             return true;
         }
+        else if(descripcion.value == ""){
+            return true;
+        }
         if(descripcion.value.length < 200){
             descripcion.value = "";
             descripcion.classList.add('alertForm');
             descripcion.placeholder = "*Descripción debe ser entre 3 y 200 carácteres";
+            return false;
+        }   
+}
+
+function validarStock(){
+    var stock = document.querySelector("#inputStock");
+        if (stock.value >= 1) {
+            return true;
+        }
+        else{
+            stock.value = "";
+            stock.classList.add('alertForm');
+            stock.placeholder = "*Stock debe ser minimo 0";
             return false;
         }   
 }
@@ -51,9 +67,15 @@ function ValidarInsumos(){
     if(validarDescripcion()== false){
         resp = false;
     }
-
+    if(validarStock() == false){
+        resp = false;
+    }
+    if(resp == false){
+        return false;
+    }
     if(resp){
         document.querySelector("#formInsumos").submit()
+        return true;
     }
 }
 

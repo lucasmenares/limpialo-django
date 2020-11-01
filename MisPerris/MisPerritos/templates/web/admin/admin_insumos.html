@@ -93,7 +93,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" name="action" value="delete" class="btn btn-danger" onclick="return ValidarInsumos()">Borrar</button>
+				<button type="submit" name="action" value="delete" class="btn btn-danger">Borrar</button>
 				<button type="submit" name="action" value="update" class="btn btn-warning" onclick="return ValidarInsumos()">Actualizar</button>
 				<button type="submit" name="action" value="register" class="btn btn-enviar" onclick="return ValidarInsumos()">Registrar</button>
 			</div>
@@ -104,5 +104,5 @@
 {% endblock contenido %}
 
 {% block js %}
-	<script src="{% static 'js/validar.js' %}"></script>
+	<script src="{% static 'js/validarInsumos.js' %}"></script>
 {% endblock js %}
