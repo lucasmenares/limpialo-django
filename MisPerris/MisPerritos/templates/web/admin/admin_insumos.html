@@ -17,7 +17,7 @@
 {% endblock header %}
 
 {% block contenido %}
-	<div class="py-5">	
+	<div class="py-5">
 		<div class="container p-5">
 			<div class="col-12 text-center pb-5">
 				<button type="button" class="btn btn-header" data-toggle="modal" data-target="#exampleModalCenter">
@@ -25,6 +25,37 @@
 				</button>
 			</div>
 			<div class="col-12">
+				<!-- Filtro Nombre -->
+				<div class="row mb-3">
+					<div class="col-6">
+						<form class="" action="{% url 'LISTNAME' %}" method="post">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-6">
+										<input class="form-control w-100" type="text" name="txtName" value="" id="txtName" style="border:1px solid black!important">
+								</div>
+								<div class="col-6">
+									<button type="submit" class="btn btn-enviar" value="Filtrar Por Nombre">Filtrar por Nombre</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<!-- Filtro Precio -->
+					<div class="col-6">
+						<form class="" action="{% url 'LISTPRICE' %}" method="post">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-6">
+										<input class="form-control w-100" type="text" name="txtPrice" value="" id="txtPrice" style="border:1px solid black!important">
+								</div>
+								<div class="col-6">
+									<button type="submit" class="btn btn-enviar" value="Filtrar Por Precio">Filtrar por Precio</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- End Filtros -->
 				<table class="text-center table table-striped table-responsive-xl" style="border-radius:5px">
 				<thead class="thead-dark">
 					<tr>
@@ -33,6 +64,7 @@
 					<th scope="col">Precio</th>
 					<th scope="col">Stock</th>
 					<th scope="col">Descripcion</th>
+					<th scope="col">Fecha Creación</th>
 					<th scope="col">Acciones</th>
 					</tr>
 				</thead>
@@ -44,18 +76,18 @@
 					<td style="vertical-align: middle;">{{item.price}}</td>
 					<td style="vertical-align: middle;">{{item.stock}}</td>
 					<td style="vertical-align: middle;">{{item.description}}</td>
+					<td style="vertical-align: middle;">{{item.created}}</td>
 					<td>
-						<button class="btn btn-warning"><a href="{% url 'MODIFYI' item.name %}">Modificar </a></button> <br> 
+						<button class="btn btn-warning"><a href="{% url 'MODIFYI' item.name %}">Modificar </a></button> <br>
 						<button class="btn btn-danger mt-2"><a href="{% url 'DELETEI' item.id %}">Eliminar </a></button>
 					</td>
 					</tr>
 					{% endfor %}
 				</tbody>
 				</table>
-			</div> 
+			</div>
 		</div>
 	</div>
-</div>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

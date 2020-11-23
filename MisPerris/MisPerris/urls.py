@@ -21,6 +21,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('MisPerritos.urls')),
+    path('',include('api.urls')),
 ]
 
 if settings.DEBUG:

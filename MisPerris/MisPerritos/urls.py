@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import index,vision,registro,usuario,galeria,direccion,login,logout_view,admin_insumo,delete_insumo,modify_insumo,update
+from .views import index,vision,registro,usuario,galeria,direccion,login,logout_view,admin_insumo,delete_insumo,modify_insumo,update,name_filter_api,price_filter_api
 
 urlpatterns = [
     path('',index,name='INDEX'),
@@ -14,5 +14,7 @@ urlpatterns = [
     path("admin_insumos/",admin_insumo,name="ADMINI"),
     path("delete_insumo/<id>", delete_insumo, name="DELETEI"),
     path("modify_insumo/<name>", modify_insumo, name="MODIFYI"),
-    path("update/", update, name="UPDATEI")
+    path("update/", update, name="UPDATEI"),
+    path("list_name/", name_filter_api, name="LISTNAME"),
+	path("price_name/", price_filter_api, name="LISTPRICE")
 ]

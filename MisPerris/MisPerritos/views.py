@@ -7,6 +7,8 @@ from django.contrib.auth import authenticate,logout,login as login_auth
 #Import decorador para impedir ingreso de paginas sin estar registrado
 from django.contrib.auth.decorators import login_required,permission_required
 
+# Permite consumir servicios
+import requests
 
 # Create your views here.
 def index(request):
@@ -86,7 +88,8 @@ def logout_view(request):
 @login_required(login_url='/login/')
 @permission_required('MisPerris.add_insumo',login_url='/login/')
 def admin_insumo(request):
-	insumos = Insumo.objects.all()
+	response = requests.get('http://127.0.0.1:8000/api/insumos/')
+	insumos = response.json()
 	if request.POST:
 		action = request.POST.get("action")
 		if action == "update":
@@ -126,13 +129,20 @@ def admin_insumo(request):
 				message = "Insumo que desea agregar ya existe"
 				return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'error':message})
 			except:
-				ins = Insumo(
+				'''ins = Insumo(
 					name=name,
 					price=price,
 					description=description,
 					stock=stock
 				)
-				ins.save()
+				ins.save()'''
+				api_data = {
+					'name':name,
+					'price':price,
+					'description':description,
+					'stock':stock
+				}
+				response = requests.post('http://127.0.0.1:8000/api/insumos/',data=api_data)
 				message = "Insumo se grabo correctamente"
 				return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'success':message})
 	return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos})
@@ -144,13 +154,16 @@ def delete_insumo(request,id):
 		ins = Insumo.objects.get(id=id)
 		ins.delete()
 		message = "Insumo eliminado correctamente"
-		insumos = Insumo.objects.all()
+		response = requests.get('http://127.0.0.1:8000/api/insumos/')
+		insumos = response.json()
 		return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'success':message})
 	except:
 		message = "No se pudo eliminar el insumo"
-		insumos = Insumo.objects.all()
+		response = requests.get('http://127.0.0.1:8000/api/insumos/')
+		insumos = response.json()
 		return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'error':message})
-	insumos = Insumo.objects.all()
+	response = requests.get('http://127.0.0.1:8000/api/insumos/')
+	insumos = response.json()
 	return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos})
 
 @login_required(login_url='/login/')
@@ -185,3 +198,17 @@ def update(request):
 			insumos = Insumo.objects.all()
 			message = "No se pudo modificar el insumo"
 			return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'error':message})
+
+def name_filter_api(request):
+	name = request.POST.get("txtName")
+	response = requests.get("http://127.0.0.1:8000/api/insumos/name/"+name+"/")
+	insumos = response.json()
+	message = "Filtrado"
+	return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'success':message})
+
+def price_filter_api(request):
+	price = request.POST.get("txtPrice")
+	response = requests.get("http://127.0.0.1:8000/api/insumos/price/"+price+"/")
+	insumos = response.json()
+	message = "Filtrado"
+	return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'success':message})

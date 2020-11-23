@@ -6,7 +6,7 @@
     background-position: center;
     background-repeat: no-repeat;
   }
-  
+
 .masthead h1{
     font-family: Poppins;
     font-style: normal;
@@ -56,4 +56,8 @@ input{
 	.registrate-title{
 		font-size: 30px!important;
 	}
+}
+
+.input-filter{
+	border:1px solid black!important;
 }
