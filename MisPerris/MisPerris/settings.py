@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django_truncate',
     'api.apps.ApiConfig',
     'rest_framework',
+	'social_django'
 ]
 
 MIDDLEWARE = [
