@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('MisPerritos.urls')),
     path('',include('api.urls')),
+	path('', include('pwa.urls')),
 ]
 
 if settings.DEBUG:

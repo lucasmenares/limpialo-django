@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SOCIAL_AUTH_FACEBOOK_KEY = '203443024514497'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'ca57bbe3437ca2d3663e3ac0c96db0a3'
 
 # Application definition
 
@@ -41,7 +43,8 @@ INSTALLED_APPS = [
     'django_truncate',
     'api.apps.ApiConfig',
     'rest_framework',
-	'social_django'
+	'social_django',
+	'pwa'
 ]
 
 MIDDLEWARE = [
@@ -52,6 +55,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+	'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'MisPerris.urls'
@@ -67,6 +71,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+				'social_django.context_processors.backends',
+				'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -104,6 +110,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+	'social_core.backends.facebook.FacebookOAuth2',
+	'django.contrib.auth.backends.ModelBackend',
+)
+
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'serviceworker.js')
+
+LOGIN_REDIRECT_URL = '/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/

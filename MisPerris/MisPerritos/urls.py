@@ -16,5 +16,6 @@ urlpatterns = [
     path("modify_insumo/<name>", modify_insumo, name="MODIFYI"),
     path("update/", update, name="UPDATEI"),
     path("list_name/", name_filter_api, name="LISTNAME"),
-	path("price_name/", price_filter_api, name="LISTPRICE")
+	path("price_name/", price_filter_api, name="LISTPRICE"),
+	path('oauth/', include('social_django.urls', namespace='social'))
 ]
