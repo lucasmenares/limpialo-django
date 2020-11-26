@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import index,vision,registro,usuario,galeria,direccion,login,logout_view,admin_insumo,delete_insumo,modify_insumo,update,name_filter_api,price_filter_api
+from .views import index,vision,registro,usuario,galeria,direccion,login,logout_view,admin_insumo,delete_insumo,modify_insumo,update,name_filter_api,price_filter_api,guardar_token
 
 urlpatterns = [
     path('',index,name='INDEX'),
@@ -17,5 +17,6 @@ urlpatterns = [
     path("update/", update, name="UPDATEI"),
     path("list_name/", name_filter_api, name="LISTNAME"),
 	path("price_name/", price_filter_api, name="LISTPRICE"),
-	path('oauth/', include('social_django.urls', namespace='social'))
+	path('oauth/', include('social_django.urls', namespace='social')),
+    path('guardar-token/',guardar_token,name="guardar-token"),
 ]

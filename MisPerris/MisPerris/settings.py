@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'rest_framework',
 	'social_django',
-	'pwa'
+	'pwa',
+    'fcm_django'
 ]
 
 MIDDLEWARE = [
@@ -114,6 +115,20 @@ AUTHENTICATION_BACKENDS = (
 	'social_core.backends.facebook.FacebookOAuth2',
 	'django.contrib.auth.backends.ModelBackend',
 )
+
+FCM_DJANGO_SETTINGS = {
+         # default: _('FCM Django')
+        "APP_VERBOSE_NAME": "limpialo-django",
+         # Your firebase API KEY
+        "FCM_SERVER_KEY": "AAAAV1rerYg:APA91bEfaanDnqyG5dKTr8gopmO05F1nFrQwRgDNCm-HQNH38dG26ldm4ny0ghuOvywsKFkPreWMRWhKjCrJqRNxdv8qUu4n45fsJOeGQjXSknyIxPX8cOocil77VnymZSC2zc0p9LjG",
+         # true if you want to have only one active device per registered user at a time
+         # default: False
+        "ONE_DEVICE_PER_USER": False,
+         # devices to which notifications cannot be sent,
+         # are deleted upon receiving error response from FCM
+         # default: False
+        "DELETE_INACTIVE_DEVICES": True,
+}
 
 PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'serviceworker.js')
 

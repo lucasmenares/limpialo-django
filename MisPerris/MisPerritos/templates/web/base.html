@@ -15,6 +15,67 @@
 	<script src="https://kit.fontawesome.com/4934c4449b.js" crossorigin="anonymous"></script>
 	<title>Limpialo</title>
 	<link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+		https://firebase.google.com/docs/web/setup#available-libraries -->
+
+	<script>
+	// Your web app's Firebase configuration
+	var firebaseConfig = {
+		apiKey: "AIzaSyBSOfHtgj7hlgV73ssxNlbjglB0GG79mmI",
+		authDomain: "limpialo-django.firebaseapp.com",
+		databaseURL: "https://limpialo-django.firebaseio.com",
+		projectId: "limpialo-django",
+		storageBucket: "limpialo-django.appspot.com",
+		messagingSenderId: "375186697608",
+		appId: "1:375186697608:web:44c78ea247997b57b35e3d"
+	};
+	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);
+	//////////////////////////////////////////
+	let messaging = firebase.messaging()
+	navigator.serviceWorker
+	.register('/serviceworker.js')
+	.then( register => {
+		messaging.useServiceWorker(register);
+		messaging.requestPermission()
+		.then( () => {
+			console.log('El usuario aceptó notificación');
+			return messaging.getToken();
+		})
+		.then( token => {
+			console.log(token);
+			// Enviar token a una función en el interior de View.py
+			fetch('guardar-token/',{
+				method: 'post',
+				headers: {
+					'Content-Type':'application/json',
+					'Accept':'application/json'
+				},
+				body: JSON.stringify({
+					'token':token
+				})
+			})
+		})
+		.catch( () => console.log('El usuario no desea notificación') )
+	});
+	//////////////////////////////////////////
+	// Generar mensaje al grabar insumo
+	  //// modelo de notificacion /////////////////////////////////
+	  messaging.onMessage( payload => {
+        let titulo=payload.notification.title
+        let opciones = {
+            body: payload.notification.body,
+            icon: payload.notification.icon
+        }
+        let mensaje = new Notification(titulo,opciones);
+    })
+    /////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////
+	</script>
 </head>
 <body>
 

@@ -10,6 +10,37 @@ from django.contrib.auth.decorators import login_required,permission_required
 # Permite consumir servicios
 import requests
 
+
+#Import para acceso de token desde javascript, posterior almacenamiento
+from django.views.decorators.http import require_http_methods
+from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse, HttpResponseBadRequest
+from django.core import serializers
+import json
+from fcm_django.models import FCMDevice
+# creación
+@csrf_exempt
+@require_http_methods(['POST'])
+def guardar_token(request):
+	body = request.body.decode('utf-8')
+	bodyDatos = json.loads(body)
+	token = bodyDatos['token']
+	# para evitar almaceanr 2 veces el mismo token
+	existe = FCMDevice.objects.filter(registration_id=token,active=True)
+	if len(existe)>0:
+		return HttpResponseBadRequest(json.dumps({'mensaje':'El token ya existe'}))
+	dispo = FCMDevice()
+	dispo.registration_id = token
+	dispo.active = True
+	# si el usuario está autentificado se puede almacenar
+	if request.user.is_authenticated:
+		dispo.user = request.user
+	try:
+		dispo.save()
+		return HttpResponse(json.dumps({'mensaje':'Token almacenado'}))
+	except:
+		return HttpResponseBadRequest(json.dumps({'mensaje':'El token no se pudo almacenar'}))
+		
 # Create your views here.
 def index(request):
 	autos = SliderPhoto.objects.all()
@@ -143,6 +174,13 @@ def admin_insumo(request):
 					'stock':stock
 				}
 				response = requests.post('http://127.0.0.1:8000/api/insumos/',data=api_data)
+				#enviar notificacion
+				dispositivo = FCMDevice.objects.filter(active=True)
+				dispositivo.send_message(
+					title='Nuevo Insumo',
+					body='Se ingresó el insumo: ' + name + ', con stock: ' + stock + ' y precio: ' + price, 
+					icon='/static/images/favicon.png'
+				)
 				message = "Insumo se grabo correctamente"
 				return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'success':message})
 	return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos})
