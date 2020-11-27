@@ -3,8 +3,11 @@ from .models import SliderPhoto,Nosotros,Mision,GaleryPhoto,Insumo,Contact,TypeC
 
 admin.site.site_header = 'Admin Limpialo'
 admin.site.site_title = 'Bienvenido al panel de administracion de Limpialo'
-admin.site.register(TypeContact)
-admin.site.register(Contact)
+
+class ContactAdmin(admin.ModelAdmin):
+    list_display= ['name', 'lastname', 'subject', 'ctype', 'message']
+    search_fields= ['name', 'lastname', 'subject', 'message']
+    list_per_page=10
 
 class SliderPhotoAdmin(admin.ModelAdmin):
     list_display= ['title','image', 'created']
@@ -43,3 +46,5 @@ admin.site.register(Nosotros, NosotrosAdmin)
 admin.site.register(Mision, MisionAdmin)
 admin.site.register(GaleryPhoto, GaleryPhotoAdmin)
 admin.site.register(Insumo, InsumoAdmin)
+admin.site.register(Contact, ContactAdmin)
+admin.site.register(TypeContact)
