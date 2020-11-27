@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from MisPerritos.models import Insumo
-from .serializers import InsumosSerializer
+from MisPerritos.models import Insumo, Contact
+from .serializers import InsumosSerializer,ContactSerializer
 from rest_framework import generics
 
 
@@ -20,3 +20,7 @@ class InsumosPriceFilterViewSet(generics.ListAPIView):
     def get_queryset(self):
         price = self.kwargs['price']
         return Insumo.objects.filter(price=price)
+
+class ContactViewSet(generics.ListCreateAPIView):
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
