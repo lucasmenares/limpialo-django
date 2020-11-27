@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import SliderPhoto,Nosotros,Mision,GaleryPhoto,Insumo
+from .models import SliderPhoto,Nosotros,Mision,GaleryPhoto,Insumo,TypeContact,Contact
 # Import Modelo de tablas User
 from django.contrib.auth.models import User
 # Import Libreria de autentificacion
@@ -250,3 +250,30 @@ def price_filter_api(request):
 	insumos = response.json()
 	message = "Filtrado"
 	return render(request, 'web/admin/admin_insumos.html', {'lista_insumos':insumos,'success':message})
+
+def contacto(request):
+	tipoContacto = TypeContact.objects.all()
+	if request.POST:
+		name = request.POST.get("name")
+		lastname = request.POST.get("lastname")
+		subject = request.POST.get("subject")
+		ctype = request.POST.get("ctype")
+		message = request.POST.get("message")
+		obj_ctype = TypeContact.objects.get(name=ctype)
+		cont = Contact(
+			name=name,
+			lastname=lastname,
+			subject=subject,
+			ctype= obj_ctype,
+			message= message
+		)
+		cont.save()
+		message = "Contacto se envió correctamente"
+		dispositivo = FCMDevice.objects.filter(active=True)
+		dispositivo.send_message(
+			title='Nuevo Contacto',
+			body='Se ingresó el contacto: ' + name + ', con Tipo: ' + ctype + ' y Asunto: ' + subject,
+			icon='/static/images/favicon.png'
+		)
+		return render(request, 'web/index.html', {'tipo_contacto':tipoContacto,'success':message})
+	return render(request, 'web/contacto.html',{'tipo_contacto':tipoContacto})

@@ -1,8 +1,10 @@
 from django.contrib import admin
-from .models import SliderPhoto,Nosotros,Mision,GaleryPhoto,Insumo
+from .models import SliderPhoto,Nosotros,Mision,GaleryPhoto,Insumo,Contact,TypeContact
 
 admin.site.site_header = 'Admin Limpialo'
 admin.site.site_title = 'Bienvenido al panel de administracion de Limpialo'
+admin.site.register(TypeContact)
+admin.site.register(Contact)
 
 class SliderPhotoAdmin(admin.ModelAdmin):
     list_display= ['title','image', 'created']
