@@ -1,2 +1,2 @@
 # limpialo-django
-Repository for Limpialo Django
+School project with Django
